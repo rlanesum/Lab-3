@@ -109,7 +109,7 @@ void standardDeviation()
 	answerD = sqrt(answer);
 }
 
-// Function to calculate the mean and deiviation of the input File and output it in the output File
+// Function to calculate and ouput the mean and deiviation of the input File values and output them to the output File
 void outputFileMD() 
 {
 	mean();
