@@ -11,6 +11,7 @@ C++ Fall 2022 Lab 3
 
 using namespace std;
 
+//Declaration of 4 variables where the numbers will be stored 
 int a;
 int b;
 int c;
@@ -20,6 +21,7 @@ float answer;
 float answerM;
 float answerD;
 
+//Input and Output file variables declared as global variables
 ifstream inFile;
 ofstream outFile;
 
@@ -29,7 +31,7 @@ void outputFileMD();
 
 int main() 
 {
-
+	//Get the four values from user input 
 	cout << "Please enter the first value: ";
 		cin >>  a;
 
@@ -46,6 +48,7 @@ int main()
 		cout << "Here are FOUR chosen Values: ";
 		cout << a << " " << b << " " <<  c << " " << d << endl;
 
+		//Call both functions to calculate the mean and standard deviation of the input values
 		mean();
 		standardDeviation();
 
@@ -53,12 +56,14 @@ int main()
 		cout << "Standard Deviation: " << answerD << endl;
 		
 		inFile.open("inMeanStd.dat");
-
+		
+		//if statement to let us know if the input file is opening
 		if (!inFile.is_open()) 
 		{
 			cout << "Can not find input file.";
 		}
 
+		//Putting the values we get from the input File into variables
 		inFile >> a;
 		inFile >> b;
 		inFile >> c;
@@ -66,19 +71,27 @@ int main()
 
 		outFile.open("outMeanStd.dat");
 
+		//if statement to let us know if the input file is opening
 		if (!outFile.is_open())
 		{
 
 			cout << "Can not find output file";
 		}
 
+		//Output the values you got from the input File into the output File
 		outFile << a << " " << b << " " << c << " " << d << endl;
+
+		//Function to calculate and output the mean and standard deviation for the values from the input File 
 		outputFileMD();
+
+		inFile.close(); 
+		outFile.close();
+		
 
 	return 0;
 }
 
-
+//Function that will calculate the mean of the 4 Values
 void mean()
 { 
 	float sum;
@@ -88,6 +101,7 @@ void mean()
 
 }
 
+//Function to calculate the standard deviation of the 4 Values
 void standardDeviation() 
 {
 	int numberofValueD = 4;
@@ -95,7 +109,7 @@ void standardDeviation()
 	answerD = sqrt(answer);
 }
 
-
+// Function to calculate the mean and deiviation of the input File and output it in the output File
 void outputFileMD() 
 {
 	mean();
@@ -103,4 +117,5 @@ void outputFileMD()
 
 	standardDeviation();
 	outFile << "Standard Deviation: " << answerD << endl;
+
 }
